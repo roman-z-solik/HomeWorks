@@ -26,6 +26,23 @@
   описание (description),  
   список товаров категории (products)  
 
+**smartphone.py** содержит 1 подкласс:  
+
+`Smartphone` подкласс от класса `Product`  
+Помимо имеющихся у класса Product свойств добавлены:  
+  производительность (efficiency),  
+  модель (model),  
+  объем встроенной памяти (memory),  
+  цвет (color).  
+
+**lawngrass.py** содержит 1 подкласс:  
+
+`Lawngrass` подкласс от класса `Product`  
+Помимо имеющихся у класса Product свойств добавлены:   
+  страна-производитель (country),     
+  срок прорастания (germination_period),      
+  цвет (color).  
+
 **utils.py** содержит 2 функции:
 
 `read_json`
@@ -39,6 +56,8 @@
 Папка `tests` содержит файлы для тестирования модулей:  
 **test_products.py**
 **test_category.py**
+**test_smartphone**
+**test_lawngrass**
 
 ### Требования
 Для установки и запуска проекта, необходимы:
