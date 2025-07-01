@@ -30,12 +30,7 @@ class Product:
             return
         elif new_price < self.__price:
             user_input = input("Новая цена ниже. Заменить цену?(Y): ")
-            if (
-                user_input == "Y"
-                or user_input == "y"
-                or user_input == "Н"
-                or user_input == "н"
-            ):
+            if user_input == "Y" or user_input == "y" or user_input == "Н" or user_input == "н":
                 self.__price = new_price
             else:
                 return
