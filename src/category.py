@@ -34,12 +34,15 @@ class Category:
         return f"{self.name}, количество продуктов: {product_count} шт."
 
     def add_product(self, adding_product: Product):
-        presence: bool = False
-        for output in self.__products:
-            if adding_product.name == output.name:
-                output.price = adding_product.price
-                output.quantity = output.quantity + adding_product.quantity
-                presence = True
-        if not presence:
-            self.__products.append(adding_product)
-            Category.product_count += 1
+        if isinstance(adding_product, Product):
+            presence: bool = False
+            for output in self.__products:
+                if adding_product.name == output.name:
+                    output.price = adding_product.price
+                    output.quantity = output.quantity + adding_product.quantity
+                    presence = True
+            if not presence:
+                self.__products.append(adding_product)
+                Category.product_count += 1
+        else:
+            raise TypeError
