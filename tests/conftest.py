@@ -7,7 +7,7 @@ from src.smartphone import Smartphone
 
 
 @pytest.fixture
-def first_category():
+def first_category() -> Category:
     return Category(
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, "
@@ -26,7 +26,7 @@ def first_category():
 
 
 @pytest.fixture
-def second_category():
+def second_category() -> Category:
     return Category(
         name="Телевизоры",
         description="Современный телевизор, который позволяет наслаждаться просмотром, станет "
@@ -43,32 +43,32 @@ def second_category():
 
 
 @pytest.fixture
-def product1():
+def product1() -> Product:
     return Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
 
 
 @pytest.fixture
-def product2():
+def product2() -> Product:
     return Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
 
 
 @pytest.fixture
-def smartphone1():
+def smartphone1() -> Smartphone:
     return Smartphone(
         "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
     )
 
 
 @pytest.fixture
-def smartphone2():
+def smartphone2() -> Smartphone:
     return Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14, 90.3, "Note 11", 1024, "Синий")
 
 
 @pytest.fixture
-def grass1():
+def grass1() -> Lawngrass:
     return Lawngrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
 
 
 @pytest.fixture
-def grass2():
+def grass2() -> Lawngrass:
     return Lawngrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
