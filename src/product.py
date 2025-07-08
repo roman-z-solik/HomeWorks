@@ -1,22 +1,22 @@
-class Product:
-    """
-    Класс Product обладает следующими свойствами:
-        название (name),
-        описание (description),
-        цена (price),
-        количество в наличии (quantity)
-    """
+from src.baseproduct import BaseProduct
+from src.print_mixin import PrintMixin
 
+
+class Product(BaseProduct, PrintMixin):
+    """ Класс Product обладает следующими свойствами: Название (name), описание (description), цена (price), количество в наличии (quantity). """
     name: str
     description: str
     price: float
     quantity: int
 
-    def __init__(self, name, description, price, quantity):
+
+    def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        self._current_product = 0
+        super().__init__()
         self._current_product = 0
 
     @property
@@ -26,29 +26,30 @@ class Product:
     @price.setter
     def price(self, new_price: float):
         if new_price <= 0:
-            print("Цена не должна быть нулевая или отрицательная")
+            print("Цена не должна быть нулевая или отрицательная.")
             return
-        elif new_price < self.__price:
-            user_input = input("Новая цена ниже. Заменить цену?(Y): ")
-            if user_input == "Y" or user_input == "y" or user_input == "Н" or user_input == "н":
-                self.__price = new_price
-            else:
+
+        if new_price < self._price:
+            confirm = input(f'Цена снижается с {self._price:.2f} до {new_price:.2f}. Подтверждаете изменение (Y/N)? ')
+            if not (confirm.lower() in ('y', 'yes')):
                 return
-        self.__price = new_price
+
+        self._price = new_price
 
     @classmethod
     def new_product(cls, parameters_list: dict):
-        product = Product
-        product.name = parameters_list["name"]
-        product.description = parameters_list["description"]
-        product.price = parameters_list["price"]
-        product.quantity = parameters_list["quantity"]
-        return product
+        """Создает новый продукт на основе переданных параметров."""
+        return cls(
+            parameters_list['name'],
+            parameters_list['description'],
+            parameters_list['price'],
+            parameters_list['quantity']
+        )
 
     def __str__(self):
-        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+        return f'{self.name}, {self.price:.2f} руб., остаток: {self.quantity} шт.'
 
     def __add__(self, other):
-        if type(other) == type(self):
-            return self.__price * self.quantity + other.__price * other.quantity
-        raise TypeError
+        if isinstance(other, Product):
+            return self.price * self.quantity + other.price * other.quantity
+        raise TypeError('Можно складывать только объекты типа Product')
