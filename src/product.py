@@ -37,11 +37,11 @@ class Product(BaseProduct, PrintMixin):
             return
 
         if new_price < self.__price:
-            confirm = input(f"Цена снижается с {self._price:.2f} до {new_price:.2f}. Подтверждаете изменение (Y/N)? ")
+            confirm = input(f"Цена снижается с {self.__price:.2f} до {new_price:.2f}. Подтверждаете изменение (Y/N)? ")
             if not (confirm.lower() in ("y", "yes")):
                 return
 
-        self._price = new_price
+        self.__price = new_price
 
     @classmethod
     def new_product(cls, parameters_list: dict):
@@ -60,17 +60,3 @@ class Product(BaseProduct, PrintMixin):
         if isinstance(other, Product):
             return self.price * self.quantity + other.price * other.quantity
         raise TypeError("Можно складывать только объекты типа Product")
-
-
-if __name__ == "__main__":
-    product1 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    product2 = Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    product3 = Product("Xiaomi Redmi Note 11","1024GB, Синий", 31000.0, 14)
-
-    print(product1.name)
-    print(product1.description)
-    print(product1.price)
-    print(product1.quantity)
-
-
-

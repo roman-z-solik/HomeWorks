@@ -7,7 +7,7 @@ from src.smartphone import Smartphone
 
 
 @pytest.fixture
-def first_category() -> Category:
+def first_category():
     return Category(
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, "
@@ -26,7 +26,7 @@ def first_category() -> Category:
 
 
 @pytest.fixture
-def second_category() -> Category:
+def second_category():
     return Category(
         name="Телевизоры",
         description="Современный телевизор, который позволяет наслаждаться просмотром, станет "
@@ -43,32 +43,41 @@ def second_category() -> Category:
 
 
 @pytest.fixture
-def product1() -> Product:
+def category_wo_products():
+    return Category(
+        name="Смартфоны",
+        description="Смартфоны, как средство не только коммуникации, "
+        "но и получение дополнительных функций для удобства жизни",
+        )
+
+
+@pytest.fixture
+def product1():
     return Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
 
 
 @pytest.fixture
-def product2() -> Product:
+def product2():
     return Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
 
 
 @pytest.fixture
-def smartphone1() -> Smartphone:
+def smartphone1():
     return Smartphone(
         "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
     )
 
 
 @pytest.fixture
-def smartphone2() -> Smartphone:
+def smartphone2():
     return Smartphone("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14, 90.3, "Note 11", 1024, "Синий")
 
 
 @pytest.fixture
-def grass1() -> Lawngrass:
+def grass1():
     return Lawngrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
 
 
 @pytest.fixture
-def grass2() -> Lawngrass:
+def grass2():
     return Lawngrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
