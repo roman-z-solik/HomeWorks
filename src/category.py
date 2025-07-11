@@ -1,5 +1,4 @@
 from src.product import Product
-from src.exceptions import ZeroRuntimeProduct
 
 
 class Category:
@@ -25,7 +24,6 @@ class Category:
         Category.category_count += 1
         Category.product_count = len(self.__products) if products else 0
 
-
     @property
     def products(self):
         return self.__products
@@ -38,8 +36,8 @@ class Category:
         return f"{self.name}, количество продуктов: {product_qty_count} шт."
 
     def add_product(self, adding_product: Product):
-        """ Добавляет новый товар в категорию либо увеличивает количество имеющегося товара.
-        Объект класса Product, представляющий товар. """
+        """Добавляет новый товар в категорию либо увеличивает количество имеющегося товара.
+        Объект класса Product, представляющий товар."""
         if isinstance(adding_product, Product):
             try:
                 found_product = next((p for p in self.__products if p.name == adding_product.name), None)
@@ -52,8 +50,7 @@ class Category:
                     Category.product_count = len(self.__products)
                     print(f"Товар {adding_product.name} в количестве {adding_product.quantity} шт. добавлен")
             finally:
-                print ("Обработка товара прошла успешно.")
-
+                print("Обработка товара прошла успешно.")
 
     def middle_price(self) -> float | int:
         try:
@@ -65,13 +62,13 @@ class Category:
 if __name__ == "__main__":
     product1 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     product2 = Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    product3 = Product("Xiaomi Redmi Note 11","1024GB, Синий", 31000.0, 14)
+    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
     product4 = Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 170000.0, 4)
 
     category1 = Category(
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, "
-                    "но и получение дополнительных функций для удобства жизни",
+        "но и получение дополнительных функций для удобства жизни",
         products=[product1, product2],
     )
     category2 = Category(
@@ -102,7 +99,7 @@ if __name__ == "__main__":
     category_n = Category(
         name="Смартфоны",
         description="Смартфоны, как средство не только коммуникации, "
-                    "но и получение дополнительных функций для удобства жизни",
-        )
+        "но и получение дополнительных функций для удобства жизни",
+    )
 
     # print(category_n.middle_price())

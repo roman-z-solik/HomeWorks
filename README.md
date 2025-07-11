@@ -63,6 +63,9 @@
 **test_lawngrass**
 **test_print_mixin**
 
+`exceptions`
+Функция содержит класс ZeroRuntimeProduct, обрабатывающий ошибки 
+
 ### Требования
 Для установки и запуска проекта, необходимы:
 [Python](https://www.python.org/)
