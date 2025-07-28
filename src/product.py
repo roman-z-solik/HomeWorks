@@ -18,7 +18,10 @@ class Product(BaseProduct, PrintMixin):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+        if quantity > 0:
+            self.quantity = quantity
+        else:
+            raise ValueError("Товар с нулевым или отрицательным количеством не может быть добавлен")
         self._current_product = 0
         super().__init__()
         self._current_product = 0
@@ -34,11 +37,11 @@ class Product(BaseProduct, PrintMixin):
             return
 
         if new_price < self.__price:
-            confirm = input(f"Цена снижается с {self._price:.2f} до {new_price:.2f}. Подтверждаете изменение (Y/N)? ")
+            confirm = input(f"Цена снижается с {self.__price:.2f} до {new_price:.2f}. Подтверждаете изменение (Y/N)? ")
             if not (confirm.lower() in ("y", "yes")):
                 return
 
-        self._price = new_price
+        self.__price = new_price
 
     @classmethod
     def new_product(cls, parameters_list: dict):
