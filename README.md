@@ -16,7 +16,10 @@
   название (name),  
   описание (description),  
   цена (price),  
-  количество в наличии (quantity)  
+  количество в наличии (quantity),  
+  родительский класс BaseProduct, описанный в файле **base_product.py**,
+  вторым наследует класс-миксин, описанный в файле **print_mixin**
+  
 
 **category.py** содержит 1 класс:
 
@@ -58,6 +61,7 @@
 **test_category.py**
 **test_smartphone**
 **test_lawngrass**
+**test_print_mixin**
 
 ### Требования
 Для установки и запуска проекта, необходимы:

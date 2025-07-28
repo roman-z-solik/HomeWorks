@@ -5,7 +5,7 @@ from src.category import Category
 from src.product import Product
 
 
-def read_json(path: str) -> dict:
+def read_json(path: str):
     fullpath = os.path.abspath(path)
     with open(fullpath, "r", encoding="UTF-8") as f:
         json_data = json.load(f)
